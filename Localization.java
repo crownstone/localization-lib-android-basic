@@ -34,6 +34,18 @@ public interface Localization {
 	void stopLocalization();
 
 	/**
+	 * Clear all stored fingerprints
+	 */
+	void clear();
+
+	/**
+	 * Remove all stored fingerprints of a given sphere.
+	 *
+	 * @param sphereId    the id of the sphere (from the cloud) to clear
+	 */
+	void removeFingerprints(String sphereId);
+
+	/**
 	 * Feed measurements to the localization in order to get location updates.
 	 *
 	 * @param rssi        the rssi of the device which was scanned
@@ -68,8 +80,8 @@ public interface Localization {
 	/**
 	 * Remove an existing fingerprint from the trained fingerprints
 	 *
-	 * @param sphereId the id of the sphere (from the cloud) this fingerprint belongs to
-	 * @param locationId the id of the location (from the cloud)
+	 * @param sphereId    the id of the sphere (from the cloud) this fingerprint belongs to
+	 * @param locationId  the id of the location (from the cloud)
 	 */
 	void removeFingerprint(String sphereId, String locationId);
 
@@ -87,8 +99,8 @@ public interface Localization {
 	 * Finalize collecting a fingerprint and store it in the appropriate classifier based on
 	 * the groupId and the locationId.
 	 *
-	 * @param sphereId the id of the sphere (from the cloud)
-	 * @param locationId the id of the location (from the cloud)
+	 * @param sphereId    the id of the sphere (from the cloud)
+	 * @param locationId  the id of the location (from the cloud)
 	 * @param fingerprint the fingerprint to be finalized/trained. if null is provided as fingerprint
 	 *                    the current fingerprint (which is created at startFingerprint) will be used
 	 * @return true if successfully trained, false otherwise
@@ -99,8 +111,8 @@ public interface Localization {
 	 * Obtain the fingerprint for this groupId and locationId. usually done after collecting it.
 	 * The user is responsible for persistently storing and loading the fingerprints.
 	 *
-	 * @param sphereId the id of the sphere (from the cloud)
-	 * @param locationId the id of the location (from the cloud)
+	 * @param sphereId    the id of the sphere (from the cloud)
+	 * @param locationId  the id of the location (from the cloud)
 	 * @return return the trained fingerprint defined by sphereId and locationId or null
 	 * if none is found
 	 */
@@ -111,8 +123,8 @@ public interface Localization {
 	 * The fingerprint can be constructed from a string by using the initializer when creating
 	 * the Fingerprint object
 	 *
-	 * @param sphereId the id of the sphere (from the cloud)
-	 * @param locationId the id of the location (from the cloud)
+	 * @param sphereId    the id of the sphere (from the cloud)
+	 * @param locationId  the id of the location (from the cloud)
 	 * @param fingerprint the fingerprint to be imported
 	 */
 	void importFingerprint(String sphereId, String locationId, Fingerprint fingerprint);
