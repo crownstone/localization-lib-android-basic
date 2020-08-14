@@ -37,4 +37,4 @@ This will trigger the callback provided in
 
 ### More
 
-See the [Localization interface class](Localization.java) for all the available functions.
+See the [Localization interface class](Localization.kt) for all the available functions.
